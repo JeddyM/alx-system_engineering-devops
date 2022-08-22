@@ -4,5 +4,5 @@
 #No use of ps
 
 
-pggrep -l bash
+pgrep -l bash
 

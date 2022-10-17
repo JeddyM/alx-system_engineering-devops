@@ -9,7 +9,7 @@ In this debugging series, broken/bugged webstacks will be given to you, the fina
 Let’s pretend that without these 2 elements, my web application cannot work.
 
 Let’s go through this example and fix the server.
-
+```
 vagrant@vagrant:~$ docker run -d -ti ubuntu:14.04
 Unable to find image 'ubuntu:14.04' locally
 14.04: Pulling from library/ubuntu
@@ -31,23 +31,23 @@ root@76f44c0da25e:/# ls /tmp/
 isworking  passwd
 root@76f44c0da25e:/#
 vagrant@vagrant:~$
-
+```
 Then my answer file would contain:
-
+```
 sylvain@ubuntu:~$ cat answerfile
 #!/usr/bin/env bash
 # Fix my server with these magic 2 lines
 cp /etc/passwd /tmp/
 echo OK > /tmp/isworking
 sylvain@ubuntu:~$
-
+```
 Note that as you cannot use interactive software such as emacs or vi in your Bash script, everything needs to be done from the command line (including file edition).
 
 ## Task
 In this first debugging project, you will need to get Apache to run on the container and to return a page containing Hello Holberton when querying the root of it.
 
 Example:
-
+```
 vagrant@vagrant:~$ docker run -p 8080:80 -d -it holbertonschool/265-0
 47ca3994a4910bbc29d1d8925b1c70e1bdd799f5442040365a7cb9a0db218021
 vagrant@vagrant:~$ docker ps
@@ -56,9 +56,11 @@ CONTAINER ID        IMAGE                   COMMAND             CREATED         
 vagrant@vagrant:~$ curl 0:8080
 curl: (52) Empty reply from server
 vagrant@vagrant:~$
-
+```
 Here we can see that after starting my Docker container, I curl the port 8080 mapped to the Docker container port 80, it does not return a page but an error message. Note that you might also get the error message curl: (52) Empty reply from server.
-
+```
 vagrant@vagrant:~$ curl 0:8080
 Hello Holberton
-vagrant@vagrant:~$After connecting to the container and fixing whatever needed to be fixed (here is your mission), you can see that curling port 80 return a page that contains Hello Holberton. Paste the command(s) you used to fix the issue in your answer file.
+vagrant@vagrant:~$
+```
+After connecting to the container and fixing whatever needed to be fixed (here is your mission), you can see that curling port 80 return a page that contains Hello Holberton. Paste the command(s) you used to fix the issue in your answer file.

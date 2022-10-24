@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# install nginx on server
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow "Nginx HTTP"
+cd /var/www/
+sudo chmod 777 html
+echo 'Hello World!' > html/index.html
+sudo chmod 755 html
+cd ~
+sudo sed -i "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+sudo service nginx restart

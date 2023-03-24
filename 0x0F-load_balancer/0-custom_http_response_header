@@ -9,4 +9,5 @@ sudo chmod 777 html
 echo 'Hello World!' > html/index.html
 sudo chmod 755 html
 cd ~
+sudo sed -i "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
 sudo service nginx restart

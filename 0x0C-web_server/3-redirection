@@ -24,4 +24,4 @@ config =\
 }
 "
 echo "$config" > /etc/nginx/sites-available/default
-sudo service nginx restart
+service nginx restart

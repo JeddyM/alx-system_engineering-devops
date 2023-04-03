@@ -4,10 +4,7 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo ufw allow "Nginx HTTP"
-cd /var/www/
-sudo chmod 777 html
-echo 'Hello World!' > html/index.html
-sudo chmod 755 html
-cd ~
-sudo sed -i "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+chmod -R 755 /var/www/
+echo 'Hello World!' > /var/www/html/index.html
+sudo sed -i "25i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
 sudo service nginx restart

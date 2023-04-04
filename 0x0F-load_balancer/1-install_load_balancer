@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# Install and configure HAproxy on server
+#Configure HAproxy so that it send traffic to web-01 and web-02
+#Distribute requests using a roundrobin algorithm
+#Make sure that HAproxy can be managed via an init script
 
 sudo apt-get -y update
-sudo apt-get -y upgrade
+sudo apt-get -y upgradei
 sudo apt-get -y install haproxy
 sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.original
 sudo sed -i "$ a\listen 38174-lb-01\n\tbind *:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 38174-web-02 54.236.16.35:80 check\n\tserver 38174-web-01 54.237.21.163:80 check" /etc/haproxy/haproxy.cfg
 sudo service haproxy start

@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-from csv import writer, QUOTE_ALL
-import requests
-import sys
 '''script that, using REST API, for a given employee ID
 returns information in a csv file
 Format must be: "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"
 File name must be: USER_ID.csv
 '''
+from csv import writer, QUOTE_ALL
+import requests
+import sys
 
 
 if __name__ == "__main__":

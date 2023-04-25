@@ -24,10 +24,8 @@ if __name__ == "__main__":
 
     # open file in write mode and write content
     with open("{}.json".format(user_id), 'w', newline='') as jsonfile:
-        for task in todos:
-            json.dump({user_id: [{
-                    "task": task.get("title"),
-                    "completed": task.get("completed"),
-                    "username": username
-                    }]}, jsonfile
-                    )
+        json.dump({user_id: [{
+                "task": task.get("title"),
+                "completed": task.get("completed"),
+                "username": username
+                } for task in todos]}, jsonfile)

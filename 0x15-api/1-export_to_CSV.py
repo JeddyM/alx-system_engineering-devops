@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # convert into json to get a dictionary and list
     user = requests.get(url + "users/{}".format(sys.argv[1])).json()
     todos = requests.get(url + "users/{}/todos".format(sys.argv[1])).json()
-    username = user.get('name')
+    username = user.get('username')
 
     # open file in write mode and write content
     with open("{}.csv".format(user_id), 'w', newline='', encoding='utf8') as f:
